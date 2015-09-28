@@ -40,11 +40,25 @@
 				context.fillRect(x, y, width, height)
 			}
 
+			var a = 1
+			var b = 0.5
+			var c = 0.25
+
 			function animationStep(){//this method will progress our animation by one frame
-				var time = Date.now() - startTime//the time elapsed
+				var time = (Date.now() - startTime) / 500//the time elapsed, divided by arbitrary 500 to 'slow' it
 				clearScreen()
-				var xRatio = Math.cos(time / 500) / 4 + 0.5//this will give us an x component of our unit circle
-				var yRatio = Math.sin(time / 500) / 4 + 0.5//this will give us a y component of our unit circle
+				/*	//boring circle
+					var xRatio = Math.cos(time / 500) / 4 + 0.5//this will give us an x component of our unit circle
+					var yRatio = Math.sin(time / 500) / 4 + 0.5//this will give us a y component of our unit circle
+				*/
+				
+				var xRatio = (a + b) * Math.cos(time) - c * Math.cos((a/b + time) * time)
+				var yRatio = (a + b) * Math.sin(time) - c * Math.sin((a/b + time) * time)
+
+				xRatio = xRatio / 4 + 0.5
+				yRatio = yRatio / 4 + 0.5
+
+
 				drawRect(xRatio * canvas.width, yRatio * canvas.height, 10, 10)//draw our newly positioned rectangle
 			}
 
