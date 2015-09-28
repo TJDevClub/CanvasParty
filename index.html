@@ -23,7 +23,7 @@
 
 			var canvas = $('can')//the canvas object
 			var context = canvas.getContext('2d')//the context is what we use to draw things on the canvas with
-
+			var interval = 0;
 			context.fillStyle = "#BADA55";//the color which will fill things
 			//context.fillRect(x, y, width, height)
 			//with the y value, 0 represents the top of the page
@@ -51,7 +51,7 @@
 
 			function startAnimation(delay){//this method will begin our animation loop -delay represents the delay in milliseconds between each event
 
-				return setInterval(//creates a repeating interval
+				interval = setInterval(//creates a repeating interval
 						function(){
 							animationStep()
 						},
@@ -59,7 +59,21 @@
 					)//this returns the id of the interval, which will let us clear it
 			}
 
-			var interval = startAnimation(1)
+			function stopAnimation(){
+				clearInterval(interval)
+			}
+
+			startAnimation(1)//this starts the animation, while assigning its id to an interval variable which we can cancel later
+
+			function changeColor(color){//color is an HTML color string, such as '#ff00ff', or a valid html color name, like 'red'
+				context.fillStyle = color
+			}
+
+			function makeCircle(x, y, radius){
+				context.beginPath();
+				context.arc(x, y, radius, 0, 2 * Math.PI);
+				context.fill();
+			}
 
 
 		</script>
