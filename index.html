@@ -24,13 +24,15 @@
 			var canvas = $('can')//the canvas object
 			var context = canvas.getContext('2d')//the context is what we use to draw things on the canvas with
 
-
-
 			context.fillStyle = "#BADA55";//the color which will fill things
 			//context.fillRect(x, y, width, height)
 			//with the y value, 0 represents the top of the page
 			//with the x value, 0 represents the left of the page
 			context.fillRect(10, 10, 100, 100);
+
+			function clearScreen(){
+				context.clearRect(0, 0, canvas.width, canvas.height)//clears canvas
+			}
 
 
 
