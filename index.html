@@ -34,8 +34,6 @@
 				context.clearRect(0, 0, canvas.width, canvas.height)//clears canvas
 			}
 
-			var startTime = Date.now()//returns the milliseconds which have passed since January 1st, 1970
-
 			function drawRect(x, y, width, height){
 				context.fillRect(x, y, width, height)
 			}
@@ -43,9 +41,11 @@
 			var a = 1
 			var b = 0.5
 			var c = 0.25
+			var time = 0//the 'start time'
+            		var deltaTime = 0.0025//the change in time, which will happen every frame update
 
 			function animationStep(){//this method will progress our animation by one frame
-				var time = (Date.now() - startTime) / 500//the time elapsed, divided by arbitrary 500 to 'slow' it
+				time += deltaTime//adds deltaTime to time, stepping time
 				clearScreen()
 				/*	//boring circle
 					var xRatio = Math.cos(time / 500) / 4 + 0.5//this will give us an x component of our unit circle
