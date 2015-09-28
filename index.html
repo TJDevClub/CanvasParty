@@ -51,15 +51,15 @@
 
 			function startAnimation(delay){//this method will begin our animation loop -delay represents the delay in milliseconds between each event
 
-				return 
-					setInterval(//creates a repeating interval
+				return setInterval(//creates a repeating interval
 						function(){
 							animationStep()
-						}
-					,
+						},
 						delay//that occurs every `delay` amount of milliseconds
 					)//this returns the id of the interval, which will let us clear it
 			}
+
+			var interval = startAnimation(1)
 
 
 		</script>
