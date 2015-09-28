@@ -40,12 +40,25 @@
 				context.fillRect(x, y, width, height)
 			}
 
-			function animationStep(){
+			function animationStep(){//this method will progress our animation by one frame
 				var time = Date.now() - startTime//the time elapsed
 				clearScreen()
 				var xRatio = Math.cos(time / 500) / 4 + 0.5//this will give us an x component of our unit circle
 				var yRatio = Math.sin(time / 500) / 4 + 0.5//this will give us a y component of our unit circle
 				drawRect(xRatio * canvas.width, yRatio * canvas.height, 10, 10)//draw our newly positioned rectangle
+			}
+
+
+			function startAnimation(delay){//this method will begin our animation loop -delay represents the delay in milliseconds between each event
+
+				return 
+					setInterval(//creates a repeating interval
+						function(){
+							animationStep()
+						}
+					,
+						delay//that occurs every `delay` amount of milliseconds
+					)//this returns the id of the interval, which will let us clear it
 			}
 
 
